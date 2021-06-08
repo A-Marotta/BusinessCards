@@ -1,0 +1,13 @@
+<h1>Card details</h1>
+
+<%= card['email'] %>
+<img src="<%= card['logo'] %>">
+
+<% if logged_in? %>
+    <form action="/cards/<%=card["id"]%>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <button>Delete</button>
+    </form>
+<% end %>
+
+<a href="/cards/<%=card["id"]%>/edit">edit</a>

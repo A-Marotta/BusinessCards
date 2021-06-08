@@ -1,0 +1,8 @@
+<h1>My cards:</h1>
+
+<% cards.each do |hash| %>
+    <h3>
+        <a href="/cards/<%= hash["id"] %>"> <%= hash["id"] %> </a> 
+    </h3>
+    
+<% end %>

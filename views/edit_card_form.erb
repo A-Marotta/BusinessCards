@@ -1,0 +1,12 @@
+<h2>Edit an existing card</h2>
+
+<form action="/cards/<%=card["id"]%>" method="post">
+    <input type="hidden" name="_method" value="put">
+    <label for="">Email</label>
+    <input type="text" name="email" value="<%= card['email'] %>">
+
+    <label for="">Logo</label>
+    <input type="text" name="logo" value="<%= card['logo'] %>">
+
+    <button>update</button>
+</form>
