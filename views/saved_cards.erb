@@ -1,0 +1,10 @@
+<h1>Saved cards:</h1>
+
+<% results.each do |hash| %>
+    <p>
+    Email: <%= hash["email"] %>
+    Name: <%= hash["full_name"] %>
+    Mobile: <%= hash["mobile"] %>
+    </p>
+<% end %>
+

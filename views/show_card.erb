@@ -1,13 +1,22 @@
 <h1>Card details</h1>
 
+<img src="<%= card['qr_code'] %>">
 <%= card['email'] %>
 <img src="<%= card['logo'] %>">
 
-<% if logged_in? %>
+<% if logged_in? && card["users_id"] == current_user["id"] %>
+    
     <form action="/cards/<%=card["id"]%>" method="post">
         <input type="hidden" name="_method" value="delete">
         <button>Delete</button>
     </form>
+    <a href="/cards/<%=card["id"]%>/edit">edit</a>
 <% end %>
 
-<a href="/cards/<%=card["id"]%>/edit">edit</a>
+<% if logged_in? && card["users_id"] != current_user["id"] %>
+    <form action="/cards/<%=card["id"]%>/save" method="post">
+        <input type="hidden" name="_method" value="put">
+        <button>Save card</button>
+    </form>
+<% end %>
+
