@@ -1,37 +1,49 @@
 <% if logged_in? && card["users_id"] == current_user["id"] %>
-    <div class="container">
-        <h2 id="my-cards">Card details</h2>
-        <div class="card">
-            <div class="card__front card__part">
-                <p class="card__front-square card__square"><img src="<%= card['qr_code'] %>"></p>
-                <img class="card__front-logo card__logo" src="<%= card["logo"] %>">
-                <p class="card_numer">TESTING</p>
-                <div class="card__space-75">
-                    <span class="card__label"><%= card["email"] %></span>
-                    <p class="card__info"><%= card["full_name"] %></p>
-                </div>
-                <div class="card__space-25">
-                    <span class="card__label"><%= card["website"] %></span>
-                    <p class="card__info"><%= card["mobile"] %></p>
-                </div>
+<div class="container">
+    <h2 id="my-cards">Card details</h2>
+    <div class="card">
+        <div class="card__front card__part">
+            <p class="card__front-square card__square"><img src="<%= card['qr_code'] %>"></p>
+            <img class="card__front-logo card__logo" src="<%= card["logo"] %>">
+            <p class="card_numer">TESTING</p>
+            <div class="card__space-75">
+                <span class="card__label"><%= card["email"] %></span>
+                <p class="card__info"><%= card["full_name"] %></p>
             </div>
-            <div class="empty-space"></div>
+            <div class="card__space-25">
+                <span class="card__label"><%= card["website"] %></span>
+                <p class="card__info"><%= card["mobile"] %></p>
+            </div>
         </div>
-
+    </div>
     <a class="button-style" href="/cards/<%=card["id"]%>/edit">Edit</a>
     <form id="delete-btn" action="/cards/<%=card["id"]%>" method="post">
         <input type="hidden" name="_method" value="delete">
         <button>Delete</button>
     </form>
-    </div>
-
-
+</div>
 <% end %>
 
 <% if logged_in? && card["users_id"] != current_user["id"] %>
-    <form action="/cards/<%=card["id"]%>/save" method="post">
+<div class="container">
+    <div class="card">
+        <div class="card__front card__part">
+            <p class="card__front-square card__square"><img src="<%= card['qr_code'] %>"></p>
+            <img class="card__front-logo card__logo" src="<%= card["logo"] %>">
+            <p class="card_numer">TESTING</p>
+            <div class="card__space-75">
+                <span class="card__label"><%= card["email"] %></span>
+                <p class="card__info"><%= card["full_name"] %></p>
+            </div>
+            <div class="card__space-25">
+                <span class="card__label"><%= card["website"] %></span>
+                <p class="card__info"><%= card["mobile"] %></p>
+            </div>
+        </div>
+    </div>
+    <form id="save-card" action="/cards/<%=card["id"]%>/save" method="post">
         <input type="hidden" name="_method" value="put">
         <button>Save card</button>
     </form>
+</div>
 <% end %>
-

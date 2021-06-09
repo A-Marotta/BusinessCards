@@ -1,4 +1,3 @@
-require 'pry'
 require 'cloudinary'
 require 'sinatra'
 require 'sinatra/reloader'
@@ -239,4 +238,12 @@ end
 get '/search' do
 
   erb :search
+end
+
+get '/list_cards' do
+  sql = "SELECT * FROM card_info WHERE full_name ILIKE $1"
+  name = params["search-name"] += '%'
+  cards = run_sql(sql, [name])
+
+  erb :card_list, locals: { cards:cards }
 end

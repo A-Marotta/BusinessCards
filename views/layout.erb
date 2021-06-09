@@ -1,35 +1,34 @@
 <!doctype html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <title>CardExchange</title>
-      <link rel='stylesheet' href='/stylesheets/main.css'>
-      <link rel="preconnect" href="https://fonts.gstatic.com">
-      <link href="https://fonts.googleapis.com/css2?family=B612&display=swap" rel="stylesheet">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   </head>
-   <body>
-      <div id="bg">
+    <head>
+        <meta charset="UTF-8">
+        <title>CardExchange</title>
+        <link rel='stylesheet' href='/stylesheets/main.css'>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=B612&display=swap" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div id="bg">
             <nav class="index-nav">
-               <h3 id="company"><a href="/">CardEx</a></h3>
-               <% if logged_in? %>
-               <h4 class="user-first-name">Hello, <%= current_user()['first_name'].capitalize %>.</h4>
-               <div class="links">
-                <a href="/cards/new">Upload</a>
-                <a href="/saved_cards">Saved</a>
-                <a href="/cards">Personal</a>
-                <a href="/search">Search</a>
-               
-               <form class="logout" action="/session" method="post">
-                  <input type="hidden" name="_method" value="delete">
-                  <button class="logout">Logout</button>
-               </form>
-               </div>
-               <% else %>
-               <a class="login" href="/login">Login</a>
-               <% end %>
+                <h3 id="company"><a href="/">CardEx</a></h3>
+                <% if logged_in? %>
+                <h4 class="user-first-name">Hello, <%= current_user()['first_name'].capitalize %>.</h4>
+                <div class="links">
+                    <a href="/cards/new">Upload</a>
+                    <a href="/saved_cards">Saved</a>
+                    <a href="/cards">Personal</a>
+                    <a href="/search">Search</a>
+                    <form class="logout" action="/session" method="post">
+                        <input type="hidden" name="_method" value="delete">
+                        <button class="logout">Logout</button>
+                    </form>
+                </div>
+                <% else %>
+                <a class="login" href="/login">Login</a>
+                <% end %>
             </nav>
-         <%= yield %>
-      </div>
-   </body>
+            <%= yield %>
+        </div>
+    </body>
 </html>

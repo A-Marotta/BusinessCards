@@ -269,3 +269,40 @@ form button:hover {
 .container h4 {
     text-align: center;
 }
+
+#search-form {
+        text-align: center;
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        z-index: 990;
+}
+
+#search-name {
+    margin: 0 auto;
+    width: 100%;
+    border-radius: 15px;
+    height: 45px;
+    font-size: 20px;
+    text-align: left;
+    background-color: white;
+    opacity: 0.8;
+    display: flex;
+    padding-left: 20px;
+    box-shadow: inset 0 0 6px 2px rgb(0 0 0 / 80%);
+}
+
+#submit-name-search {
+    border: none;
+    border-radius: 30px;
+    display: flex;
+    margin-left: -40px;
+    z-index: 999;
+    height: 30px;
+}
+
+#save-card {
+    align-items: flex-start;
+    width: 200px;
+}
