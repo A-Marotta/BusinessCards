@@ -1,6 +1,6 @@
 require 'cloudinary'
 require 'sinatra'
-require 'sinatra/reloader'
+require 'sinatra/reloader' if development?
 require 'bcrypt'
 require 'HTTParty'
 
