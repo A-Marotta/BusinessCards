@@ -2,7 +2,7 @@ require 'cloudinary'
 require 'sinatra'
 require 'sinatra/reloader' if development?
 require 'bcrypt'
-require 'HTTParty'
+require 'httparty'
 
 require_relative 'db/helpers.rb'
 
