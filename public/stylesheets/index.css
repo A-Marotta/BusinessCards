@@ -1,0 +1,157 @@
+* { 
+    box-sizing: border-box;
+    font-family: 'B612', sans-serif;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    background-color: #f8f9fa;
+}
+
+.container {
+    height: 100%;
+}
+
+.index-nav {
+    padding-top: 2%;
+}
+
+.wrapper {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.main-text {
+    padding-left: 5%;
+}
+
+.main-text h3, .main-text h5 {
+    margin: 0;
+    color: white;
+}
+
+.main-text h3 {
+    font-size: 40px;
+}
+
+.main-text h5 {
+    font-size: 16px;
+}
+
+.user-first-name {
+    display: inline;
+    color: white;
+}
+
+.links {
+    padding-left: 10%;
+    display: inline;
+}
+
+.links a {
+    text-decoration: none;
+    font-size: 28px;
+    color: white;
+    display: inline;
+    padding: 0 35px;
+}
+
+a:hover, .logout:hover {
+    color: red;
+}
+
+.login, .logout {
+    padding-right: 10%;
+    font-size: 32px;
+    float: right;
+    color: white;
+    text-decoration: none;
+    margin-top: 8px;
+}
+
+.logout {
+    border: none;
+    background: none;
+    display: inline;
+    cursor: pointer;
+}
+
+#company {
+    display: inline;
+    padding-left: 5%;
+    font-size: 48px;
+}
+
+#company a {
+    text-decoration: none;
+    color: white;
+}
+
+#intro {
+    background: url("/img/index_bg.png")no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+}
+
+section {
+    background-color: #f8f9fa;
+}
+
+/* SERVICES 1 */
+
+.services-v1, .services-v2 {
+    padding-top: 5%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: 10px;
+    width: 60%;
+}
+
+.services-v1 img, .services-v2 img {
+    width: 300px;
+    height: 300px;
+}
+
+.left-grid-v1, .right-grid-v2 {
+    margin: 0 auto;
+}
+
+.right-grid-v1, .left-grid-v2 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.service-text-v1, .service-text-v2 {
+    width: 75%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.right-grid-v1 h1, .left-grid-v2 h1 {
+    padding-bottom: 14px;
+    color: #1a84ef;
+    font-size: 34px;
+}
+
+/* SERVICES 2  */
+.services-v2 {
+    grid-template-columns: 3fr 2fr;
+}
+
+/* SERVICES 3  */
+.services-v3 {
+    padding-top: 10%;
+    margin: 0 auto;
+    width: 80%;
+    text-align: center;
+}

@@ -1,8 +1,23 @@
 require 'pry'
+require 'cloudinary'
 require 'sinatra'
 require 'sinatra/reloader'
 require 'bcrypt'
+require 'HTTParty'
+
 require_relative 'db/helpers.rb'
+
+captcha_secret = ENV['GOOGLE_CAPTCHA_SECRET']
+captcha_site = ENV['GOOGLE_CAPTCHA_SITE']
+cloudinary_key = ENV['CLOUDINARY_KEY']
+cloudinary_secret = ENV['CLOUDINARY_SECRET']
+cloudinary_name = ENV['CLOUDINARY_NAME']
+
+options = {
+  cloud_name: cloudinary_name,
+  api_key: cloudinary_key,
+  api_secret: cloudinary_secret
+}
 
 enable :sessions
 
@@ -28,15 +43,34 @@ def saved_cards?
   run_sql(sql, [session[:user_id]])[0] 
 end
 
+def check_email_not_exists?(email)
+  sql = "SELECT * FROM users WHERE email = $1"
+  res = run_sql(sql, [email])
+
+  if res.to_a.length == 0
+    true
+  else
+    false
+  end
+end
+
+def create_qr_code
+  sql = "SELECT last_value FROM card_info_id_seq;"
+  id = run_sql(sql)
+  id = id[0]["last_value"].to_i
+
+  qr_code = "https://api.qrserver.com/v1/create-qr-code/?data=http://localhost:4567/cards/#{id}"
+end
+
 get '/' do
   cards = run_sql("SELECT * FROM card_info;")
 
-  erb :index, locals: { cards:cards }
+  erb :index, :layout => false, locals: { cards:cards } 
 end
 
 get '/login' do
 
-  erb :login
+  erb :login, :layout => false
 end
 
 post '/session' do
@@ -47,7 +81,7 @@ post '/session' do
     session[:user_id] = users[0]["id"]
     redirect '/'
   else
-    erb :login
+    redirect '/login'
   end
 end
 
@@ -71,21 +105,26 @@ end
 post '/cards' do
   redirect '/login' unless logged_in?
 
+  res = Cloudinary::Uploader.upload(params['card_logo']['tempfile'], options)
+  url = res["url"]
+
   sql = "INSERT INTO card_info (users_id, email, full_name, logo, mobile, website, business_address) values ($1, $2, $3, $4, $5, $6, $7);"
 
   run_sql(sql, [
     current_user()['id'],
     params["card_email"],
     params["card_fullname"],
-    params["card_logo"],
+    url,
     params["card_mobile"],
     params["card_website"],
     params["card_address"]
   ])
 
-  
+  create_qr_code
 
-  redirect '/'
+  binding.pry
+  
+  redirect '/cards'
 end
 
 get '/cards/:id' do
@@ -106,7 +145,7 @@ delete '/cards/:id' do
   sql = "DELETE FROM card_info WHERE id = $1;"
   run_sql(sql, [params["id"]])
 
-  redirect '/'
+  redirect '/cards'
 end
 
 get '/cards/:id/edit' do
@@ -118,11 +157,18 @@ get '/cards/:id/edit' do
 end
 
 put '/cards/:id' do
-  sql = ("UPDATE card_info SET email = $1, logo = $2 WHERE id = $3;")
+  sql = ("UPDATE card_info SET email = $1, full_name = $2, logo = $3, mobile = $4, website = $5, business_address = $6 WHERE id = $7;")
+
+  res = Cloudinary::Uploader.upload(params['card_logo']['tempfile'], options)
+  url = res["url"]
 
   run_sql(sql, [
-    params['email'], 
-    params['logo'], 
+    params['card_email'], 
+    params['card_fullname'],
+    url, 
+    params['card_mobile'],
+    params['card_website'],
+    params['card_business_address'],
     params['id']
   ])
 
@@ -135,9 +181,13 @@ get '/saved_cards' do
   saved_cards = saved_cards.to_a
   saved_cards = saved_cards[0]["saved_cards"]
 
-  results = run_sql("SELECT * FROM card_info WHERE id = ANY('#{saved_cards}'::int[]);")
-  results = results.to_a
-  erb :saved_cards, locals: { results:results }
+  if saved_cards.to_s.length > 0
+    results = run_sql("SELECT * FROM card_info WHERE id = ANY('#{saved_cards}'::int[]);")
+    results = results.to_a
+    erb :saved_cards, locals: { results:results }
+  else
+    redirect '/'
+  end
 end
 
 put '/cards/:id/save' do
@@ -147,3 +197,30 @@ put '/cards/:id/save' do
 
   redirect "/saved_cards"
 end
+
+get '/sign_up' do
+
+  erb :sign_up_form, :layout => false, locals: { captcha_site:captcha_site }
+end
+
+post '/sign_up' do
+  captcha_response = params["g-recaptcha-response"]
+  google_response = HTTParty.post("https://www.google.com/recaptcha/api/siteverify?secret=#{captcha_secret}&response=#{captcha_response}")
+
+  if google_response["success"] && check_email_not_exists?(params["email"])
+    password_digest = BCrypt::Password.create(params["password"])
+
+    sql = "INSERT INTO users (email, password_digest, first_name, last_name) VALUES ($1, $2, $3, $4)"
+
+    run_sql(sql, [
+      params["email"],
+      password_digest,
+      params["first_name"],
+      params["last_name"]
+    ])
+
+    redirect '/'
+  else
+    redirect '/sign_up'
+  end
+end 

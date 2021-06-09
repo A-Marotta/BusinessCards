@@ -1,0 +1,264 @@
+* { 
+    box-sizing: border-box;
+    /* border: 2px solid red; */
+    font-family: 'B612', sans-serif;
+}
+
+.user-first-name {
+    display: inline;
+    color: white;
+}
+
+.index-nav {
+    padding-top: 2%;
+}
+
+.links {
+    padding-left: 10%;
+    display: inline;
+}
+
+.links a {
+    text-decoration: none;
+    font-size: 28px;
+    color: white;
+    display: inline;
+    padding: 0 35px;
+}
+
+a:hover, .logout:hover {
+    color: red;
+}
+
+.login, .logout {
+    padding-right: 10%;
+    font-size: 32px;
+    float: right;
+    color: white;
+    text-decoration: none;
+    margin-top: 8px;
+}
+
+.logout {
+    border: none;
+    background: none;
+    display: inline;
+    cursor: pointer;
+}
+
+#company {
+    display: inline;
+    padding-left: 5%;
+    font-size: 48px;
+}
+
+#company a {
+    text-decoration: none;
+    color: white;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    background-color: #f8f9fa;
+}
+
+#bg {
+    background: url("/img/create_card_bg.png")no-repeat center center fixed;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 150%;
+}
+
+.container {
+    width: 40%;
+    background: rgba(0, 0, 0, 0);
+    padding: 20px 0;
+    border-radius: .3em;
+    margin-left: 10%;
+    margin-top: 10%;
+    color: white;
+}
+
+.container h2 {
+    text-align: center;
+    padding-bottom: 45px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form button {
+    margin: 40px 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    width: 75%;
+}
+
+.left-grid, .right-grid {
+    display: flex;
+    flex-direction: column;
+}
+
+.left-grid input, .right-grid input {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+}
+
+form button {
+    padding: 10px;
+    background-color: #007bff;;
+    border-color: #007bff;
+    color: white;
+    border-radius: .3rem;
+    font-size: 16px;
+    cursor: pointer;
+    width: 50%;
+}
+
+form button:hover {
+    background-color: #175fad;
+    border-color: #175fad;
+}
+
+.card{
+    width: 400px;
+    height: 190px;
+    -webkit-perspective: 600px;
+    -moz-perspective: 600px;
+    perspective:600px;
+}
+
+.card__part{
+    box-shadow: 1px 1px #aaa3a3;
+    top: 0;
+    position: absolute;
+    z-index: 1000;
+    left: 0;
+    display: inline-block;
+    width: 500px;
+    height: 190px;
+    background: gray;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 8px;
+}
+  
+.card__front{
+    padding: 18px; 
+}
+
+.card__front-square a {
+    text-decoration: none;
+    color: white;
+}
+
+.card__logo {
+    height: 40px;
+}
+
+.card__front-logo, .card__square {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+}
+
+.card__square {
+    margin: 0;
+    left: 18px;
+}
+
+.card_numer {
+    padding-top: 50px;
+    display: block;
+    width: 100%;
+    word-spacing: 4px;
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.card__space-75 {
+    width: 30%;
+    float: left;
+}
+
+.card__space-25 {
+    width: 35%;
+    float: right;
+}
+
+.card__label {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.8);
+    letter-spacing: 1px;
+}
+
+.card__info {
+    margin-bottom: 0;
+    margin-top: 5px;
+    font-size: 16px;
+    line-height: 18px;
+    color: #fff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.empty-space {
+    padding-bottom: 200px;
+}
+
+#my-cards {
+    text-align: left;
+}
+
+.button-style {
+    padding: 11px;
+    background-color: #007bff;;
+    border-color: #007bff;
+    color: white;
+    border-radius: .3rem;
+    font-size: 16px;
+}
+
+.button-style {
+    text-align: center;
+    text-decoration: none;
+    background-color: darkgray;
+    border-color: darkgray;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.button-style:hover {
+    background-color: gray;
+    border-color: gray;
+    color: white;
+}
+
+#delete-btn {
+    display: inline;
+}
+
+#delete-btn button {
+    display: inline;
+    width: 100px;
+}

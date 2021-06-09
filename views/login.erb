@@ -1,12 +1,22 @@
-<h2>Login</h2>
-
-<form action="/session" method="post">
-    <input type="hidden">
-    <label for="">Email</label>
-    <input type="text" name="email">
-
-    <label for="">Password</label>
-    <input type="password" name="password">
-
-    <button>login</button>
-</form>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel='stylesheet' href='/stylesheets/login.css'>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=B612&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form id="login" action="/session" method="post">
+            <input class="input-login" type="text" placeholder="Email address" name="email">
+            <input class="input-login" type="password" placeholder="Password" name="password">
+            <button>Sign in</button>
+        </form>
+        <a class="sign-up" href="/sign_up">Don't have an account? Sign up.</a>
+    </div>
+</body>
+</html>

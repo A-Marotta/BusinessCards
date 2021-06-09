@@ -1,12 +1,20 @@
-<h2>Edit an existing card</h2>
-
-<form action="/cards/<%=card["id"]%>" method="post">
+<div class="container">
+    <h2>Update business card: <%=card['id']%></h2>
+    <form action="/cards/<%=card["id"]%>" method="post" enctype="multipart/form-data">
     <input type="hidden" name="_method" value="put">
-    <label for="">Email</label>
-    <input type="text" name="email" value="<%= card['email'] %>">
+        <div class="grid">
+            <div class="left-grid">
+                <input type="text" name="card_email" value="<%= card['email'] %>">
+                <input type="text" name="card_fullname" value="<%= card['full_name'] %>">
+                <input type="file" name="card_logo"> 
+            </div>
 
-    <label for="">Logo</label>
-    <input type="text" name="logo" value="<%= card['logo'] %>">
-
-    <button>update</button>
-</form>
+            <div class="right-grid">
+                <input type="text" name="card_mobile"  value="<%= card['mobile'] %>">
+                <input type="text" name="card_website" value="<%= card['website'] %>">
+                <input type="text" name="card_address" value="<%= card['business_address'] %>">
+            </div>
+        </div>
+        <button>Submit changes</button>
+    </form>
+</div>

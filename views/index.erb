@@ -1,11 +1,79 @@
-<h1>hello world</h1>
+<!doctype html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <title>CardExchange</title>
+      <link rel='stylesheet' href='/stylesheets/index.css'>
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=B612&display=swap" rel="stylesheet">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+   <body>
+      <div class="container">
+         <div id="intro" class="view">
+            <nav class="index-nav">
+               <h3 id="company"><a href="/">CardEx</a></h3>
+               <% if logged_in? %>
+               <h4 class="user-first-name">Hello, <%= current_user()['first_name'].capitalize %>.</h4>
+               <div class="links">
+                <a href="/cards/new">Upload new card</a>
+                <a href="/saved_cards">Saved cards</a>
+                <a href="/cards">Personal cards</a>
+               
+               <form class="logout" action="/session" method="post">
+                  <input type="hidden" name="_method" value="delete">
+                  <button class="logout">Logout</button>
+               </form>
+               </div>
+               <% else %>
+               <a class="login" href="/login">Login</a>
+               <% end %>
+            </nav>
+            <div class="wrapper">
+               <div class="main-text">
+                  <h3>A digital form of business cards</h3>
+                  <h5>Connecting you to your business partners for life!</h5>
+               </div>
+            </div>
+         </div>
+      </div>
+      
+    <section>
+        <div class="services-v1">
+            <div class="left-grid-v1">
+                <img src="/img/mobile.png" alt="">
+            </div>
 
-<% if logged_in? %> 
-    <% cards.each do |hash| %>
-    <h3>
-        <a href="/cards/<%= hash["id"] %>"> <%= hash["id"] %> </a> 
-    </h3>
-    <%=hash['full_name']%>
-<% end %>
-<% end %>
+            <div class="right-grid-v1">
+                <h1 class="service-text-v1">CardEx promise</h1>
+                <p class="service-text-v1">
+                    <ul>
+                        <li>Setup in just minutes</li>
+                        <li>Simple to manage business contacts</li>
+                        <li>Multiple cards for each profession</li>
+                        <li>Resources at your fingertips</li>
+                        <li>User-friendly</li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+    </section>
 
+    <section>
+        <div class="services-v2">
+            <div class="left-grid-v2">
+                <h1 class="service-text-v2">Our service</h1>
+                <p class="service-text-v2">Our software delivers a new way to organize and store all of your contacts in one secure location.<br>
+                Gone are the days of losing business contacts and that potential link to business prospects or clients.<br>
+                Use our service to create as many business cards as professions you have, each tailored to your unique self.<br>
+                Save an unlimited amount of business contacts and never run the risk of losing that connection again!</p>
+            </div>
+
+
+            <div class="right-grid-v2">
+                <img src="/img/connect_mobile.png" alt="">
+            </div>
+        </div>
+    </section>
+   </body>
+</html>
