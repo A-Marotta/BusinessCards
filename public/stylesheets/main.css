@@ -1,6 +1,5 @@
 * { 
     box-sizing: border-box;
-    /* border: 2px solid red; */
     font-family: 'B612', sans-serif;
 }
 
@@ -64,7 +63,7 @@ html, body {
 }
 
 #bg {
-    background: url("/img/create_card_bg.png")no-repeat center center fixed;
+    background: url("/img/create_card_bg.png") center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     -webkit-background-size: cover;
@@ -167,6 +166,10 @@ form button:hover {
     color: white;
 }
 
+.card__front-square.card__square img {
+    height: 75px;
+}
+
 .card__logo {
     height: 40px;
 }
@@ -261,4 +264,8 @@ form button:hover {
 #delete-btn button {
     display: inline;
     width: 100px;
+}
+
+.container h4 {
+    text-align: center;
 }

@@ -60,6 +60,8 @@ def create_qr_code
   id = id[0]["last_value"].to_i
 
   qr_code = "https://api.qrserver.com/v1/create-qr-code/?data=http://localhost:4567/cards/#{id}"
+
+  return [qr_code, id]
 end
 
 get '/' do
@@ -105,9 +107,13 @@ end
 post '/cards' do
   redirect '/login' unless logged_in?
 
-  res = Cloudinary::Uploader.upload(params['card_logo']['tempfile'], options)
-  url = res["url"]
-
+  if params['card_logo'] != nil
+    res = Cloudinary::Uploader.upload(params['card_logo']['tempfile'], options)
+    url = res["url"]
+  else 
+    url = ''
+  end
+  
   sql = "INSERT INTO card_info (users_id, email, full_name, logo, mobile, website, business_address) values ($1, $2, $3, $4, $5, $6, $7);"
 
   run_sql(sql, [
@@ -120,9 +126,9 @@ post '/cards' do
     params["card_address"]
   ])
 
-  create_qr_code
-
-  binding.pry
+  qr = create_qr_code
+  sql_qr_insert = "UPDATE card_info SET qr_code = '#{qr[0]}' WHERE id = $1"
+  run_sql(sql_qr_insert, [qr[1]])
   
   redirect '/cards'
 end
@@ -157,10 +163,15 @@ get '/cards/:id/edit' do
 end
 
 put '/cards/:id' do
-  sql = ("UPDATE card_info SET email = $1, full_name = $2, logo = $3, mobile = $4, website = $5, business_address = $6 WHERE id = $7;")
 
-  res = Cloudinary::Uploader.upload(params['card_logo']['tempfile'], options)
-  url = res["url"]
+  if params['card_logo'] != nil
+    res = Cloudinary::Uploader.upload(params['card_logo']['tempfile'], options)
+    url = res["url"]
+  else 
+    url = ''
+  end
+
+  sql = ("UPDATE card_info SET email = $1, full_name = $2, logo = $3, mobile = $4, website = $5, business_address = $6 WHERE id = $7;")
 
   run_sql(sql, [
     params['card_email'], 
@@ -186,7 +197,7 @@ get '/saved_cards' do
     results = results.to_a
     erb :saved_cards, locals: { results:results }
   else
-    redirect '/'
+    erb :no_saved_cards
   end
 end
 
@@ -224,3 +235,8 @@ post '/sign_up' do
     redirect '/sign_up'
   end
 end 
+
+get '/search' do
+
+  erb :search
+end
