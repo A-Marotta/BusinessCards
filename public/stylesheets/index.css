@@ -162,21 +162,14 @@ section {
     animation: come-in 3s ease forwards;
 }
 
-.come-in-left:nth-child(odd) {
-    animation-duration: 3s; /* So they look staggered */
-}
+.come-in-left:nth-child(odd), .come-in-right:nth-child(odd) {
+    animation-duration: 3s;
+} 
 .come-in-right {
     transform: translateX(400px);
     animation: come-in 3s ease forwards;
 }
 
-.come-in-right:nth-child(odd) {
-    animation-duration: 3s; /* So they look staggered */
-}
-.already-visible {
-    transform: translateY(0);
-    animation: none;
-  }  
 @keyframes come-in {
     to { transform: translateY(0); }
 }

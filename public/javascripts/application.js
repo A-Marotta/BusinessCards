@@ -14,7 +14,7 @@
   
     };
       
-  })(jQuery);
+})(jQuery);
 
 var win = $(window);
 var leftMods = $(".module-left");
@@ -40,4 +40,4 @@ win.scroll(function(event) {
       } 
     });
     
-  });
+});
