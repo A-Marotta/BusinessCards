@@ -18,14 +18,14 @@ API integration also seen through the below:
 <br/>
  
 ### Design
-  - Database:
+  - Database: <br/>
     ![Alt text](/design-docs/DB-Diagram.png?raw=true "Database")
 
-  - Wireframe (Homepage & CardList):
-    ![Alt text](/design-docs/WF-index.png?raw=true "Homepage")
+  - Wireframe (Homepage & CardList): <br/>
+    ![Alt text](/design-docs/WF-index.png?raw=true "Homepage") <br/>
     ![Alt text](/design-docs/WF-CardList.png?raw=true "CardList")
 
-  - Flowchart (Sign in / sign up):
+  - Flowchart (Sign in / sign up): <br/>
     ![Alt text](/design-docs/Flow-User-SignIn.png?raw=true "Sign in / sign up")
 
  <br/>
