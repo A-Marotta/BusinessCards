@@ -205,7 +205,7 @@ form button:hover {
 }
 
 .card__space-25 {
-    width: 35%;
+    /* width: 35%; */
     float: right;
 }
 
@@ -307,3 +307,4 @@ form button:hover {
     align-items: flex-start;
     width: 200px;
 }
+
