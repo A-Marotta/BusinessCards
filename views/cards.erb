@@ -1,21 +1,21 @@
 <div class="container">
     <h2 id="my-cards">My cards:</h2>
     <% cards.each do |hash| %>
-    <div class="card">
-        <div class="card__front card__part">
-            <p class="card__front-square card__square"><a href="/cards/<%= hash["id"] %>"> Card ID: <%= hash["id"] %> </a> </p>
-            <img class="card__front-logo card__logo" src="<%= hash["logo"] %>">
-            <p class="card_numer">TESTING</p>
-            <div class="card__space-75">
-                <span class="card__label"><%= hash["email"] %></span>
-                <p class="card__info"><%= hash["full_name"] %></p>
-            </div>
-            <div class="card__space-25">
-                <span class="card__label"><%= hash["website"] %></span>
-                <p class="card__info"><%= hash["mobile"] %></p>
+        <div class="card">
+            <div class="card__front card__part">
+                <p class="card__front-square card__square"><a href="/cards/<%= hash["id"] %>"> Card ID: <%= hash["id"] %> </a> </p>
+                <img class="card__front-logo card__logo" src="<%= hash["logo"] %>">
+                <p class="card_numer">TESTING</p>
+                <div class="card__space-75">
+                    <span class="card__label"><%= hash["email"] %></span>
+                    <p class="card__info"><%= hash["full_name"] %></p>
+                </div>
+                <div class="card__space-25">
+                    <span class="card__label"><%= hash["website"] %></span>
+                    <p class="card__info"><%= hash["mobile"] %></p>
+                </div>
             </div>
         </div>
-        <div class="empty-space"></div>
     <% end %>
-    </div>
+    
 </div>

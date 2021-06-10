@@ -63,14 +63,13 @@ html, body {
 }
 
 #bg {
-    background: url("/img/create_card_bg.png") center center;
-    background-repeat: no-repeat;
+    background: url("/img/create_card_bg.png");
     background-attachment: fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    height: 150%;
+    min-height: 100%;
 }
 
 .container {
@@ -81,6 +80,7 @@ html, body {
     margin-left: 10%;
     margin-top: 10%;
     color: white;
+    height: 100%;
 }
 
 .container h2 {
@@ -139,6 +139,7 @@ form button:hover {
     -webkit-perspective: 600px;
     -moz-perspective: 600px;
     perspective:600px;
+    margin-bottom: 12px;
 }
 
 .card__part{
