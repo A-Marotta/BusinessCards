@@ -17,6 +17,19 @@ API integration also seen through the below:
 4) Install gems as seen in Gemfile.
 <br/>
  
+### Design
+  - Database:
+    ![Alt text](/design-docs/DB-Diagram.png?raw=true "Database")
+
+  - Wireframe (Homepage & CardList):
+    ![Alt text](/design-docs/WF-index.png?raw=true "Homepage")
+    ![Alt text](/design-docs/WF-CardList.png?raw=true "CardList")
+
+  - Flowchart (Sign in / sign up):
+    ![Alt text](/design-docs/Flow-User-SignIn.png?raw=true "Sign in / sign up")
+
+ <br/>
+ 
 ### Future aspirations
 1) Database to include a field which when true will make the card non-searchable to other users.
     - This will inturn allow users to have 'private' business cards only shareable via the QR code.
