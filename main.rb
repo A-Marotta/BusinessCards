@@ -58,7 +58,7 @@ def create_qr_code
   id = run_sql(sql)
   id = id[0]["last_value"].to_i
 
-  qr_code = "https://api.qrserver.com/v1/create-qr-code/?data=http://localhost:4567/cards/#{id}"
+  qr_code = "https://api.qrserver.com/v1/create-qr-code/?data=https://agile-taiga-85738.herokuapp.com/cards/#{id}"
 
   return [qr_code, id]
 end

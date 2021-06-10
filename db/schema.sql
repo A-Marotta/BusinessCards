@@ -18,7 +18,7 @@ CREATE TABLE card_info (
     full_name TEXT,
     logo TEXT,
     qr_code TEXT,
-    mobile BIGINT,
+    mobile TEXT,
     website TEXT,
     business_address TEXT
 );
