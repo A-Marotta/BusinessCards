@@ -1,5 +1,9 @@
 # Business Card Exchanging Platform (CardEx)
 
+Test user account:<br/>
+Login: john@gmail.com <br/>
+Password: johncrud
+
 ### Introduction and technologies.
 A webapp built to store your own and other users business cards for life.  
 Built in Ruby following CRUD operations this webapp makes use of a PostgreSQL database ontop of the sinatra DSL framework.   
